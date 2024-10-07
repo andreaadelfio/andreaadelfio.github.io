@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Anomaly Detection with Machine Learning in Time Series Data from the Fermi Anti-Coincidence Detector (09/10/2024 - 11/10/2024 poster)</title>
+    <link rel="stylesheet" href="poster.css">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
+    <!-- Based on a poster template from https://github.com/cpitclaudel/academic-poster-template -->
+
+          <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+          <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+    
+      <style type="text/css">
+    html { font-size: 0.95rem }
+  </style>
+  </head>
+
+  <body vocab="http://schema.org/" typeof="ScholarlyArticle">
+    <header role="banner">
+      <aside>
+                <div style="width: 24rem">
+    <a href="https://next-generation-eu.europa.eu"><img style="height: 2.5rem; padding: 0.55rem" src="img/logos/nextgeneu-white-logo.png" alt="NextGenEU logo"></a>
+    <a href="https://www.mur.gov.it"><img style="height: 2.5rem; padding: 0.55rem" src="img/logos/mur-white-logo.png" alt="MUR logo"></a>
+    <a href="https://www.italiadomani.gov.it"><img style="height: 2.5rem; padding: 0.55rem" src="img/logos/pnrr-white-logo.png" alt="PNRR logo"></a>
+    <a href="https://www.supercomputing-icsc.it/en"><img style="height: 2.5rem; padding: 0.55rem" src="img/logos/icsc-white-logo-nobkg.png" alt="ICSC logo"></a>
+  </div>
+              </aside>
+      <div>
+        <h1 property="headline">Anomaly Detection with Machine Learning in Time Series Data from the Fermi Anti-Coincidence Detector</h1>
+                          <p>in <strong><em>Gravi Gamma Nu 2024</em></strong> (09/10/2024 - 11/10/2024)</p>
+                        <a href="https://agenda.infn.it/event/38056/"><img alt="indico event" src="https://img.shields.io/badge/indico-event-black?style=flat&logoColor=white"></a>
+              <address>
+            <span class="medium">
+    <a property="author"><strong>A. Adelfio</strong><sup>1</sup></a>,
+    <a property="author">S. Cutini<sup>1</sup></a>,
+    <a property="author">S. Germani<sup>2</sup></a>,
+    <a property="author">F. Longo<sup>3</sup></a>,
+    <a property="author">R. Crupi<sup>4</sup></a>,
+  </span>
+<br/>            <span class="normal">
+    <sup>1</sup><a property="sourceOrganization">INFN-Perugia</a>,
+    <sup>2</sup><a property="sourceOrganization">University of Perugia</a>,
+    <sup>3</sup><a property="sourceOrganization">INFN-Trieste</a>,
+    <sup>4</sup><a property="sourceOrganization">University of Udine</a>,
+      </span>
+        </address>
+        <span class="publication-info">
+                      <span property="publisher">09/10/2024 - 11/10/2024</span>,
+            <time pubdate property="datePublished" datetime="2024-10-09">October 09, 2024</time>
+                  </span>
+      </div>
+      <aside>
+                <a href="https://gravi-gamma.my.canva.site/fifth-gravi-gamma-workshop"><img style="padding: 0.55rem" src="img/logos/logo-banner.png" alt="EuCAIFCon logo"></a>
+              </aside>
+    </header>
+
+    <main property="articleBody">
+          <article>
+    <header><h3>1. Motivation</h3></header>
+    <p>
+      This work presents a versatile and flexible <strong>Machine Learning-based software</strong> designed to
+      address two main challenges: 
+      <ul>
+        <li><strong>modeling the temporal behaviours</strong>
+      within datasets to predict the evolution of time series;</li>
+        <li><strong>identifying anomalies</strong> within those series;</li>
+              </ul>
+    </p>
+  </article>
+
+    <article>
+    <header><h3>2. Background Prediction with Neural Networks</h3></header>
+    <p>
+      The software was developed starting from the need to predict the background in the Anti-Coincidence Detector (ACD) onboard the Fermi satellite.
+      The software implements a <strong>Feed Forward Neural Network</strong> (FFNN) to model the temporal behaviours.
+      The network is trained on a dataset of time series from the Fermi Anti-Coincidence Detector (ACD) given a set of input features:
+      <ul>
+        <li>the parameters in the <strong>weekly Spacecraft files</strong> (FT2) from the Fermi Collaboration;</li>
+        <li>the <strong>Solar Activity</strong> retrieved from the Geostationary Operational Environmental Satellite (GOES) X-Ray Sensor (XRS).</li>
+      </ul>
+      
+    </p>
+    <figure>
+      <img style="width: 90%" src="img/schemes/inputs_nn_output.png" alt="full/fast sim schemes">
+      <figcaption>
+        <small>
+          The <strong>detailed simulation</strong> of physics processes relies on Geant4 and is computed 
+          within Gauss*, the LHCb simulation software.<br>
+          <strong><em>Fast simulation</em></strong> techniques aim to speed up Geant4 by parameterizing 
+          the energy deposits instead of relying on physics models.
+        </small>
+      </figcaption>
+    </figure>
+    <hr/>
+    <figure>
+      <img style="width: 90%" src="img/schemes/flash-sim-scheme.png" alt="flash sim schemes">
+      <figcaption>
+        <small>
+          <strong><em>Flash</em></strong> (or <em>Ultra-Fast</em>) <strong><em>simulation</em></strong> 
+          strategies aim to directly transform generator-level particles into analysis-level reconstructed 
+          objects.
+        </small>
+      </figcaption>
+    </figure>
+  </article>
+
+    <article>
+    <header><h3>3. What is Lamarr?</h3></header>
+    <p>
+      <strong><em>Lamarr</em></strong> is the novel flash-simulation framework of LHCb, able to offer the 
+      fastest option to produce simulated samples. Lamarr consists of a <strong>pipeline of</strong> (ML-based) 
+      <strong>modular parameterizations</strong> designed to replace both the simulation and reconstruction steps.
+    </p>
+    <figure>
+      <img style="width: 95%" src="img/schemes/lamarr-pipeline.png" alt="Lamarr modular layout">
+    </figure>
+    <p>
+      The Lamarr pipeline can be split in two branches:
+      <ol>
+        <li><strong>charged particles</strong> require tracking and particle identification models;</li>
+        <li><strong>neutral objects</strong> need to face the <em>particle-to-particle correlation</em> problem.</li>
+      </ol>
+    </p>
+  </article>
+
+    <article>
+    <header><h3>4. Models under the \(k\)-to-\(k\) hypothesis</h3></header>
+    <p>
+      Assuming the existence of an <strong>unambiguous</strong> (\(k\)-to-\(k\)) <strong>relation</strong> 
+      between generated particles and reconstructed objects, the high-level detector response can be modeled in terms 
+      of <strong>efficiency</strong> and <strong>"resolution"</strong> (i.e., analysis-level quantities):
+      <ul>
+        <li><strong><u>Efficiency:</u></strong> <em>Deep Neural Networks</em> (DNN) trained to perform 
+        classification tasks so that they can be used to parameterize the fraction of "good" candidates (e.g., 
+        accepted, reconstructed, or selected).</li>
+        <li><strong><u>Resolution:</u></strong> Conditional <em>Generative Adversarial Networks</em>
+        (GAN) trained on detailed simulated samples to parameterize the high-level response of LHCb detector 
+        (e.g., reconstruction errors, differential log-likelihoods, or multivariate classifier output).</li>
+      </ul>
+    </p>
+  </article>
+
+    <article>
+    <header><h3>5. Charged particles: the tracking system</h3></header>
+    <p>
+      Lamarr parameterizes the high-level response of the <strong>LHCb tracking system</strong> relying on the 
+      following models:
+      <ul>
+        <li><strong><u>propagation:</u></strong> approximates the trajectory of charged particles through the 
+        dipole magnetic field &#8594; <em>parametric model</em>;</li>
+        <li><strong><u>geometrical acceptance:</u></strong> predicts which of the generated tracks lay within a sensitive 
+        area of the detector &#8594; <em>DNN model</em>;</li>
+        <li><strong><u>tracking efficiency:</u></strong> predicts which of the generated tracks in the acceptance are properly 
+        reconstructed by the detector &#8594; <em>DNN model</em>;</li>
+        <li><strong><u>tracking resolution:</u></strong> parameterizes the errors introduced by the reconstruction algorithms
+        to the track parameters &#8594; <em>GAN model</em>;</li>
+        <li><strong><u>covariance matrix:</u></strong> parameterizes the uncertainties assessed by the Kalman filter
+        procedure &#8594; <em>GAN model</em>.</li>
+      </ul>
+    </p>
+    <hr/>
+    <figure>
+      <img style="width: 49%" src="img/lhcb-figs/lamarr-trk-efficiency.png" alt="Lamarr trk efficiency">
+      <img style="width: 49%" src="img/lhcb-figs/lamarr-trk-resolution.png" alt="Lamarr trk resolution">
+      <figcaption>
+        <small>
+          Validation plots for the DNN-based model of the tracking efficiency (left) and the GAN-based model of
+          the spatial tracking resolution (right).
+        </small>
+      </figcaption>
+    </figure>
+  </article>
+
+    <article>
+    <header><h3>6. Charged particles: the PID system</h3></header>
+    <p>
+      Lamarr parameterizes the high-level response of the <strong>LHCb PID system</strong> relying on the following 
+      models:
+      <ul>
+        <li><strong><u>RICH PID:</u></strong> parameterizes DLLs resulting from the RICH detectors &#8594; 
+        <em>GAN model</em>;</li>
+        <li><strong><u>MUON PID:</u></strong> parameterizes likelihoods resulting from the MUON system &#8594; 
+        <em>GAN model</em>;</li>
+        <li><strong><u>isMuon flag:</u></strong> parameterizes the response of a FPGA-based criterion for muon loose 
+        boolean selection &#8594; <em>DNN model</em>;</li>
+        <li><strong><u>Global PID:</u></strong> parameterizes the global high-level response of the PID system, 
+        consisting of CombDLLs and ProbNNs &#8594; <em>GAN model</em>.</li>
+      </ul>
+    </p>
+    <p>
+    Lamarr provides separated models for <strong>muons</strong>, <strong>pions</strong>, <strong>kaons</strong>, 
+    and <strong>protons</strong> for each PID set of variables.
+    </p>
+    <hr/>
+    <figure>
+      <img style="width: 47%; padding-right: 1.0%" src="img/lhcb-figs/lamarr-pid-richdll-hist.png" alt="Lamarr RICH histograms">
+      <img style="width: 47%; padding-left: 1.0%" src="img/lhcb-figs/lamarr-pid-richdll-eff-k.png" alt="Lamarr RICH efficiency">
+      <figcaption>
+        <small>
+          Validation plots for the proton-kaon separation parameterized with the GAN-based models of the RICH 
+          response in terms of distributions (left) and proton selection misidentification (right).
+        </small>
+      </figcaption>
+    </figure>
+  </article>
+
+    <article>
+    <header><h3>7. Neutral objects: the ECAL detector</h3></header>
+    <p>
+      The flash simulation of the LHCb ECAL detector is a non trivial task:
+      <ul>
+        <li>bremsstrahlung radiation, converted photons, or merged \(\pi^0\) may lead to have \(n\) <strong>generated 
+        particles</strong> responsible for \(m\) <strong>reconstructed objects</strong> (in general, with \(n \ne m)\);</li>
+        <li>the <strong><em>particle-to-particle correlation</em> problem</strong> limits the validity of strategies 
+        used for modeling the unambiguous \(k\)-to-\(k\) detector response.</li>
+      </ul>
+    </p>
+    <p>
+      To parameterize a generic \(n\)-to-\(m\) response of the ECAL detector, solutions inspired by the natural
+      language <strong>translation problem</strong> are currently under investigation:
+      <ul>
+        <li>the aim is to define an <strong>event-level description</strong> of the ECAL response;</li>
+        <li>assuming ordered sequences of photons/clusters, the problem can be modeled with a 
+        <strong><em>Transformer</em></strong> model;</li>
+        <li>complying with the problem topology, the ECAL response can be modeled with a 
+        <strong><em>Graph Neural Network</em></strong> (GNN) model</li>
+      </ul>
+    </p>
+    <hr/>
+    <figure>
+      <img style="width: 48%; padding-right: 0.5%" src="img/lhcb-figs/lamarr-ecal-full.png" alt="Lamarr ECAL full">
+      <img style="width: 48%; padding-left: 0.5%" src="img/lhcb-figs/lamarr-ecal-flash.png" alt="Lamarr ECAL flash">
+      <figcaption>
+        <small>
+          Validation plots for the \((x, y)\)-position of the ECAL clusters as reconstructed by detailed
+          simulation (left) and a Transformer-based model (right). Each bin entry is properly weighted to 
+          include also the energy signature.
+        </small>
+      </figcaption>
+    </figure>
+  </article>
+
+    <article>
+    <header><h3>8. Validation campaign</h3></header>
+    <p>
+      Lamarr provides the high-level response of the LHCb detector by relying on a <strong>pipeline of</strong> 
+      (subsequent) <strong>ML-based modules</strong>. To validate the charged particles chain, the distributions 
+      of a set of <strong>analysis-level</strong> reconstructed quantities resulting from Lamarr have been compared 
+      with those obtained from detailed simulation for \(\Lambda_b^0 \to \Lambda_c^+ \mu^- X\) decays 
+      with \(\Lambda_c^+ \to p K^- \pi^+\). 
+    </p>
+    <p>
+      The deployment of the ML-based models follows a <strong><em>transcompilation approach</em></strong> based on 
+      <strong><span class="monospace">scikinC</span></strong>. The models are translated to C files, compiled as 
+      <em>shared objects</em>, and then dynamically linked in the LHCb simulation software (Gauss).
+    </p>
+    <p>
+      The integration of Lamarr with Gauss enables:
+      <ul>
+        <li>interface with all the <strong>LHCb-tuned physics generators</strong> (e.g., Pythia8, EvtGen);</li>
+        <li>compatibility with the <strong>distributed computing middleware</strong> and production environment;</li>
+        <li>providing <strong>ready-to-use datasets</strong> for centralized analysis.</li>
+      </ul>
+    </p>
+    <hr/>
+    <figure>
+      <img style="width: 49%" src="img/lhcb-figs/Py8_Lambda_c_mu_mass.png" alt="Py8 Lc_mu mass">
+      <img style="width: 49%" src="img/lhcb-figs/PGun_Lambda_c_mu_mass.png" alt="PGun Lc_mu mass">
+      <figcaption>
+        <small>
+          Validation plots for the \(\Lambda_c^+ \mu^-\) mass obtained from Pythia8 (left) and particle-gun (right) 
+          generators by Lamarr VS. detailed simulation. Reproduced from 
+          <a href="https://cds.cern.ch/record/2814081">LHCB-FIGURE-2022-014</a>.
+        </small>
+      </figcaption>
+    </figure>
+  </article>
+
+    <article>
+    <header><h3>9. Preliminary timing studies</h3></header>
+    <p>
+      Overall time needed for producing simulated samples has been analyzed for detailed simulation (Geant4-based) 
+      and Lamarr. When Lamarr is employed, the generation of particles from collisions (e.g., with Pythia8) 
+      becomes the new <strong>major CPU consumer</strong>.
+    </p>
+    <p>
+      Lamarr could allow to reduce the CPU cost for the simulation of (at least) 
+      <strong>two-order-of-magnitude</strong>. Further reductions will require speeding up the generators.
+    </p>
+    <p class="boxed center">
+              <strong><u>Detailed simulation:</u></strong> Pythia8 + Geant4 + reco<br/>
+        1M events @ 2.5 kHS06.s/event ≃ 80 HS06.y
+          </p>
+    <p class="boxed center">
+              <strong><u>Flash simulation:</u></strong> Pythia8 + Lamarr<br/>
+        1M events @ 0.5 kHS06.s/event ≃ 15 HS06.y
+          </p>
+    <p class="boxed center">
+              <strong><u>Flash simulation:</u></strong> ParticleGun + Lamarr<br/>
+        100M events @ 1 HS06.s/event ≃ 4 HS06.y
+          </p>
+  </article>
+
+    <article>
+    <header><h3>10. The role of ICSC for Flash Simulation</h3></header>
+    <p>
+      The <strong>lifecycle of a generic flash-simulation model</strong> includes designing, training, optimization, 
+      deployment, and validation, before to be put into production. While the development steps often involve 
+      <strong>multiple GPU nodes</strong> (<em>HPC paradigm</em>), the validation phase typically relies on the same 
+      distributed computing resources employed in the <strong>production environment</strong> (<em>HTC paradigm</em>).
+    </p>
+    <p>
+      The aim of <strong>ICSC</strong> (<em>Italian Center for SuperComputing</em>) is to create the national digital 
+      infrastructure for research and innovation, leveraging existing <strong>HPC</strong>, <strong>HTC</strong> and 
+      <strong>Big Data</strong> infrastructures and evolving towards a cloud data-lake model. The Lamarr framework is 
+      pioneering such <strong>hybrid workloads on distributed and federated resources</strong>, employing nodes from 
+      both WLCG data centers and pre-exascale supercomputers (e.g., Leonardo).
+    </p>    
+  </article>
+
+    <article>
+    <header><h3>11. Conclusions and outlook</h3></header>
+    <p>
+      Great effort is ongoing to put a <strong>fully parametric simulation</strong> of the LHCb experiment 
+      into production, aiming to reduce the pressure on computing resources.
+    </p>
+    <p>
+      DNN-based and GAN-based models succeed in describing the high-level response of the LHCb tracking and 
+      PID detectors for <strong>charged particles</strong>. Work is still required to parameterize the 
+      response of the ECAL detector due to the <strong>particle-to-particle correlation problem</strong>.
+    </p>
+    <p>
+      Future development Lamarr aims to support both integration within the LHCb software stack and its 
+      use as a <strong>stand-alone</strong> package.
+    </p>
+  </article>
+
+    <article>
+    <header><h3>Acknowledgements</h3></header>
+    <p>
+      The work presented in this contribution is performed in the framework of Spoke 0 and Spoke 2 of the ICSC 
+      project - <em>Centro Nazionale di Ricerca in High Performance Computing, Big Data and Quantum Computing</em>, 
+      funded by the NextGenerationEU European initiative through the Italian Ministry of University and 
+      Research, PNRR Mission 4, Component 2: Investment 1.4, Project code CN00000013 - CUP I53C21000340006.
+    </p>
+  </article>
+
+    <article>
+    <header><h3>References</h3></header>
+    <small>
+      <ol>
+        <li>V. Chekalina <em>et al.</em>, <em>Generative Models for Fast Calorimeter Simulation: the LHCb case</em>, <a href="https://doi.org/10.1051/epjconf/201921402034">EPJ Web Conf. <strong>214</strong> (2019) 02034</a>, <a href="https://arxiv.org/abs/1812.01319">arXiv:1812.01319</a></li>
+        <li>A. Maevskiy <em>et al.</em>, <em>Fast Data-Driven Simulation of Cherenkov Detectors Using Generative Adversarial Networks</em>, <a href="https://doi.org/10.1088/1742-6596/1525/1/012097">J. Phys. Conf. Ser. <strong>1525</strong> (2020) 012097</a>, <a href="https://arxiv.org/abs/1905.11825">arXiv:1905.11825</a></li>
+                <li>L. Anderlini and M. Barbetti, <em>scikinC: a tool for deploying machine learning as binaries</em>, <a href="https://doi.org/10.22323/1.409.0034">PoS <strong>CompTools2021</strong> (2022) 034</a></li>
+        <li>A. Rogachev and F. Ratnikov, <em>GAN with an Auxiliary Regressor for the Fast Simulation of the Electromagnetic Calorimeter Response</em>, <a href="https://doi.org/10.1088/1742-6596/2438/1/012086">J. Phys. Conf. Ser. <strong>2438</strong> (2023) 012086</a>, <a href="https://arxiv.org/abs/2207.06329">arXiv:2207.06329</a></li>
+        <li>L. Anderlini <em>et al.</em>, <em>Lamarr: the ultra-fast simulation option for the LHCb experiment</em>, <a href="https://doi.org/10.22323/1.414.0233">PoS <strong>ICHEP2022</strong> (2023) 233</a></li>
+        <li>M. Barbetti, <em>Lamarr: LHCb ultra-fast simulation based on machine learning models deployed within Gauss</em>, <a href="https://arxiv.org/abs/2303.11428">arXiv:2303.11428</a></li>
+                <li>L. Anderlini <em>et al.</em>, <em>The LHCb ultra-fast simulation option, Lamarr: design and validation</em>, <a href="https://arxiv.org/abs/2309.13213">arXiv:2309.13213</a></li>
+        <li>F. Vaselli <em>et al.</em>, <em>End-to-end simulation of particle physics events with Flow Matching and generator Oversampling</em>, <a href="https://arxiv.org/abs/2402.13684">arXiv:2402.13684</a></li>
+        <li>M. Barbetti, <em>The flash-simulation paradigm and its implementation based on Deep Generative Models for the LHCb experiment at CERN</em>, PhD thesis, University of Firenze, 2024</li>
+      </ol>
+    </small>
+                  </article>
+    </main>
+
+    <footer>
+      <address>
+            <strong>ICSC</strong> Italian Research Center on High-Performance Computing, Big Data and Quantum Computing
+      </address>
+      <address>
+            <em>Missione 4 • Istruzione e Ricerca</em>
+      </address>
+                    October 2024, Bari (Italy)
+    </footer>
+  </body>
+</html>
