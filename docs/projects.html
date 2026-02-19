@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Progetti</title>
+    <title>Projects</title>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
@@ -38,10 +38,10 @@
               tr.innerHTML = `<td><a href="${url}" target="_blank">${name}</a></td><td>${desc}</td>`;
               tbody.appendChild(tr);
             }
-          }catch(e){
-            console.error(e);
-            document.querySelector('#projects-table tbody').innerHTML = '<tr><td colspan="2">Errore nel caricamento del CSV</td></tr>';
-          }
+            }catch(e){
+              console.error(e);
+              document.querySelector('#projects-table tbody').innerHTML = '<tr><td colspan="2">Error loading projects CSV</td></tr>';
+            }
         })();
       </script>
     </main>
