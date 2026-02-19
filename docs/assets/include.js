@@ -89,21 +89,46 @@ async function testCandidate(href){
   }
 }
 
-async function normalizeNavLinks(root){
+function getNavContextMode(){
+  const includeScript = document.querySelector('script[src*="include.js"]');
+  const rawSrc = includeScript ? (includeScript.getAttribute('src') || '') : '';
+  const src = rawSrc.replace(/^\.\//, '');
+  // Root wrapper page (`index.html`) references `docs/assets/include.js`
+  // while pages inside `docs/` reference `assets/include.js`.
+  return src.startsWith('docs/assets/') ? 'root-wrapper' : 'docs-pages';
+}
+
+function resolveInternalNavHref(href, mode){
+  const match = href.match(/^([^?#]*)([?#].*)?$/);
+  const rawPath = match ? match[1] : href;
+  const suffix = match && match[2] ? match[2] : '';
+  let path = rawPath.replace(/^\.\//, '').replace(/^\/+/, '');
+
+  if(!path || path.startsWith('../')) return href;
+
+  if(mode === 'root-wrapper'){
+    if(path.startsWith('docs/')) return path + suffix;
+    if(path === 'index.html') return 'index.html' + suffix;
+    return 'docs/' + path + suffix;
+  }
+
+  if(path.startsWith('docs/')) path = path.replace(/^docs\//, '');
+  if(path === 'index.html' && location.pathname.includes('/docs/')){
+    return '../index.html' + suffix;
+  }
+  return path + suffix;
+}
+
+function normalizeNavLinks(root){
   const container = root || document;
-  const links = Array.from(container.querySelectorAll('.main-nav a'));
+  const links = Array.from(container.querySelectorAll('.brand a, .main-nav a, .footer-nav a'));
   if(!links.length) return;
+  const mode = getNavContextMode();
+
   for(const a of links){
-    let href = a.getAttribute('href') || '';
+    const href = a.getAttribute('href') || '';
     if(href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) continue;
-    const candidates = [href, './' + href, '../' + href, 'docs/' + href, '/' + href, '/docs/' + href];
-    for(const c of candidates){
-      const ok = await testCandidate(c);
-      if(ok){
-        a.setAttribute('href', c);
-        break;
-      }
-    }
+    a.setAttribute('href', resolveInternalNavHref(href, mode));
   }
 }
 
