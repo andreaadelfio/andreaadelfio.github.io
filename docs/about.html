@@ -188,14 +188,15 @@
     <div id="site-footer"></div>
         <script src="assets/include.js"></script>
         <script>
-            // Toggle Short CV window
+            // Toggle Short CV: show/hide the detailed sidebar and content
             document.addEventListener('DOMContentLoaded', ()=>{
                 const btn = document.querySelector('.cv-toggle');
                 const win = document.getElementById('short-cv');
-                if(!btn || !win) return;
+                const main = document.querySelector('main.wrap.two-col');
+                if(!btn || !win || !main) return;
                 btn.addEventListener('click', ()=>{
-                    const isHidden = win.hasAttribute('hidden');
-                    if(isHidden){
+                    const isOpen = main.classList.toggle('short-cv-open');
+                    if(isOpen){
                         win.removeAttribute('hidden');
                         btn.textContent = 'Hide Short CV';
                         btn.setAttribute('aria-expanded','true');
@@ -203,7 +204,6 @@
                         win.setAttribute('hidden','');
                         btn.textContent = 'Show Short CV';
                         btn.setAttribute('aria-expanded','false');
-                        // focus back to button
                         btn.focus();
                     }
                 });
