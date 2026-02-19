@@ -11,6 +11,6 @@ async function loadInclude(selector, path){
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-  loadInclude('#site-header','includes/header.html');
-  loadInclude('#site-footer','includes/footer.html');
+  loadInclude('#site-header','docs/includes/header.html');
+  loadInclude('#site-footer','docs/includes/footer.html');
 });
