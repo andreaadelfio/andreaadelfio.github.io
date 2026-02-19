@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Me</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+
+  <body>
+    <div id="site-header"></div>
+
+    <main class="wrap two-col">
+        <h1>About Me</h1>
+        
+        <section>
+            <p class="lead">
+                Data Scientist and ML Engineer | Astrophysics Researcher.
+            </p>
+            <div class="profile-image">
+                <img src="data/images/IMG-20191110-WA0041.jpg" alt="Profile picture">
+            </div>
+            <h2>At a glance</h2>
+            <p>
+            Physicist by training and engineer by practice, I work at the intersection of 
+            mathematical rigor and production-grade software. I am driven by problems that 
+            require both solid theoretical foundations and reliable, maintainable implementations. 
+            I value clean system design, reproducibility, and long-term sustainability of code.
+            </p>
+            <p>
+            Over the past five years, I have operated across research and industry, designing 
+            end-to-end machine learning pipelines and scalable software systems, with a particular 
+            focus on multivariate time series, anomaly detection and uncertainty quantification. 
+            I am especially motivated by contexts where open science, knowledge sharing and 
+            interdisciplinary collaboration translate advanced methods into real-world impact.
+            </p>
+        </section>
+
+        <div class="sidebar">
+            <section>
+                <h2>Technical Skills</h2>
+                <div class="table-wrap">
+                    <h3>Programming</h3>
+                    Python (Expert), SQL (Expert), Java (Proficient), Bash, JavaScript, C/C++, LaTeX
+                    <h3>Machine Learning</h3>
+                    Deep Learning, Bayesian Neural Networks, Time Series Analysis, Anomaly Detection, TensorFlow, PyTorch
+                    <h3>Engineering</h3>
+                    Git, CI/CD, Docker, Kubernetes, Linux/Unix, HPC, Data Lakes
+                </div>
+            </section>
+
+            <section>
+                <h2>Languages</h2>
+                <div class="table-wrap">
+                <table>
+                    <tbody>
+                    <tr><th>Italian</th><td>Native</td></tr>
+                    <tr><th>English</th><td>C2 — Cambridge C2 Proficiency (Score 202)</td></tr>
+                    <tr><th>German</th><td>B1</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </section>
+        </div>
+
+        <div class="content">
+
+        <section>
+            <h2>Work Experience</h2>
+
+            <article class="table-wrap">
+            <h3 style="margin:0 0 6px">
+                Data Scientist & ML Engineer — ICSC & INFN
+            </h3>
+            <p class="muted" style="margin:0 0 10px">
+                Sep 2023 — Dec 2025 • Perugia, Italy
+            </p>
+            <p>
+                Design, development and maintenance of <strong>TSLies</strong>, an open-source 
+                Python framework for neural-network-based anomaly detection on multivariate 
+                time series data (TensorFlow, TensorFlow Probability).
+            </p>
+            <ul>
+                <li>Implementation of FFNN, RNN and Bayesian neural networks for uncertainty-aware anomaly detection.</li>
+                <li>Application to NASA Fermi satellite monitoring data.</li>
+                <li>Supervision and mentoring of junior researchers and Master’s students.</li>
+                <li>Contribution to ATS industrial demonstrator for financial anomaly monitoring (Intesa Sanpaolo).</li>
+                <li>Design of scalable data lakes and storage architectures for large-scale datasets.</li>
+            </ul>
+            
+            <br>
+            <h3 style="margin:0 0 6px">
+                Software Engineer — Accenture Technology Solutions
+            </h3>
+            <p class="muted" style="margin:0 0 10px">
+                May 2021 — Aug 2023 • Milan, Italy
+            </p>
+            <ul>
+                <li>Development and maintenance of mission-critical enterprise systems (Java, SQL, JavaScript).</li>
+                <li>Full software lifecycle management: version control, testing and production deployment.</li>
+                <li>Work in Scrum teams with CI/CD pipelines and workflow automation.</li>
+                <li>Delivery of scalable solutions for international clients.</li>
+            </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <article class="table-wrap">
+            <h3 style="margin:0 0 6px">M.Sc. in Physics — University of Trieste</h3>
+            <p class="muted">2018 — 2020 • Final grade: 101/110</p>
+            <p>Thesis: <em>Gravitational Wave Counterparts Detection with CTA</em>.</p>
+
+            <br>
+            <h3 style="margin:0 0 6px">B.Sc. in Physics — University of Cagliari</h3>
+            <p class="muted">2015 — 2018 • Final grade: 97/110</p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Key Projects</h2>
+
+            <article>
+            <a href="https://github.com/andreaadelfio/TSLies" target="_blank" rel="noopener">
+                <h3>TSLies — Time Series anomaLies</h3>
+            </a>
+            <p>
+                Open-source Python framework for anomaly detection in multivariate time series,
+                integrating neural networks and statistical learning methods.
+            </p>
+            <p class="muted">
+            </p>
+            </article>
+
+            <article>
+            <h3>Satellite Anomaly Detection Pipelines</h3>
+            <p>
+                Modular ML pipelines for transient detection and distributional shift analysis
+                on large-scale satellite monitoring data.
+            </p>
+            </article>
+
+            <article>
+            <h3>Data Infrastructure</h3>
+            <p>
+                Development of reproducible data-access workflows, preprocessing pipelines and
+                scalable storage solutions for large scientific datasets.
+            </p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Selected Publications</h2>
+            <ul id="publications-list">
+            </ul>
+            <script>
+              async function loadPublications(){
+                try{
+                  const res = await fetch('data/publications.json');
+                  const data = await res.json();
+                  const list = document.getElementById('publications-list');
+                  data.publications.forEach(pub => {
+                    const li = document.createElement('li');
+                    let text = `${pub.authors}: <strong>${pub.title}</strong>. <em>${pub.venue} ${pub.year}</em>`;
+                    if(pub.status === 'under review') text += ' (under review)';
+                    if(pub.url) li.innerHTML = `<a href="${pub.url}" target="_blank" rel="noopener">${text}</a>`;
+                    else li.innerHTML = text;
+                    list.appendChild(li);
+                  });
+                }catch(e){
+                  console.error('Error loading publications:', e);
+                  document.getElementById('publications-list').innerHTML = '<li>Error loading publications.</li>';
+                }
+              }
+              document.addEventListener('DOMContentLoaded', loadPublications);
+            </script>
+        </section>
+        </div>
+        </main>
+
+
+    <div id="site-footer"></div>
+    <script src="assets/include.js"></script>
+  </body>
+</html>

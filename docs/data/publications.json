@@ -1,0 +1,44 @@
+{
+  "publications": [
+    {
+      "title": "Advances on TSLies: Time Series AnomaLIES, an Efficient Machine Learning Based Anomaly Detection Framework",
+      "authors": "Andrea Adelfio et al.",
+      "venue": "Astronomy and Computing",
+      "year": 2025,
+      "url": null,
+      "status": "under review"
+    },
+    {
+      "title": "Scalable and Interoperable Data Management in the Spoke 3 Big Data Infrastructure",
+      "authors": "Giacomo Coran et al.",
+      "venue": "Astronomy and Computing",
+      "year": 2025,
+      "url": null,
+      "status": "under review"
+    },
+    {
+      "title": "Anomaly Detection with Machine Learning on Time Series: Unveiling Lost Transients Data",
+      "authors": "Andrea Adelfio et al.",
+      "venue": "Proceedings of the Euromicro International Conference on Parallel, Distributed, and Network-Based Processing (PDP)",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/PDP66500.2025.00062",
+      "status": "published"
+    },
+    {
+      "title": "Spoke 3 Big Data Management, Storage, and Archive Infrastructure",
+      "authors": "Giacomo Coran et al.",
+      "venue": "Proceedings of the Euromicro International Conference on Parallel, Distributed, and Network-Based Processing (PDP)",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/PDP66500.2025.00072",
+      "status": "published"
+    },
+    {
+      "title": "Searching for Very-High-Energy Electromagnetic Counterparts to Gravitational-Wave Events with the Cherenkov Telescope Array",
+      "authors": "Barbara Patricelli et al.",
+      "venue": "Proceedings of the 37th International Cosmic Ray Conference",
+      "year": 2021,
+      "url": "https://doi.org/10.22323/1.395.0998",
+      "status": "published"
+    }
+  ]
+}

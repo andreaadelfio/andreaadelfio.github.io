@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Progetti</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main class="wrap container">
+      <h1>Selected Projects</h1>
+
+      <section>
+        <div class="table-wrap">
+          <table id="projects-table">
+            <thead><tr><th>Name</th><th>Description</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <script>
+        async function loadCSV(path){
+          const res = await fetch(path);
+          const txt = await res.text();
+          const rows = txt.trim().split('\n').map(r=>r.split(','));
+          return rows;
+        }
+        (async ()=>{
+          try{
+            const rows = await loadCSV('data/projects.csv');
+            const tbody = document.querySelector('#projects-table tbody');
+            for(let i=1;i<rows.length;i++){
+              const [name,desc,url] = rows[i];
+              const tr = document.createElement('tr');
+              tr.innerHTML = `<td><a href="${url}" target="_blank">${name}</a></td><td>${desc}</td>`;
+              tbody.appendChild(tr);
+            }
+          }catch(e){
+            console.error(e);
+            document.querySelector('#projects-table tbody').innerHTML = '<tr><td colspan="2">Errore nel caricamento del CSV</td></tr>';
+          }
+        })();
+      </script>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="assets/include.js"></script>
+  </body>
+</html>
