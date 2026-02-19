@@ -48,6 +48,18 @@ th,td{padding:8px 10px;text-align:left;border-bottom:1px solid rgba(255,255,255,
 .short-cv-header h3{margin:0 0 8px;color:var(--accent)}
 .short-cv-body p{color:#e6eef8;line-height:1.5}
 
+/* Hide the detailed CV content (sidebar + content) until Short CV is opened */
+main.wrap.two-col .sidebar,
+main.wrap.two-col .content{
+  display: none;
+}
+main.wrap.two-col.short-cv-open .sidebar,
+main.wrap.two-col.short-cv-open .content{
+  display: block;
+}
+/* ensure grid layout resumes when short-cv is open */
+main.wrap.two-col.short-cv-open{display:grid;grid-template-columns:280px 1fr;gap:28px}
+
 /* Footer social icons */
 .site-footer .social{display:flex;justify-content:center;gap:12px;margin-bottom:8px}
 .site-footer .social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;color:var(--muted);text-decoration:none}
