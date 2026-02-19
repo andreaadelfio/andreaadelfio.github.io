@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Publications</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <div id="page-spinner" class="page-spinner">
+      <div class="spinner-content">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <div id="site-header"></div>
+
+    <main class="wrap container">
+      <h1>Publications</h1>
+      <p class="lead">Selected peer-reviewed publications, preprints, and technical reports.</p>
+
+      <section>
+        <h2>Selected Publications</h2>
+        <ul id="publications-list">
+        </ul>
+        <script>
+          async function loadPublications(){
+            try{
+              const res = await fetch('data/publications.json');
+              const data = await res.json();
+              const list = document.getElementById('publications-list');
+              if(!data.publications || data.publications.length === 0){
+                list.innerHTML = '<li>No publications available yet.</li>';
+                return;
+              }
+              data.publications.forEach(pub => {
+                const li = document.createElement('li');
+                let text = `${pub.authors}: <strong>${pub.title}</strong>. <em>${pub.venue} ${pub.year}</em>`;
+                if(pub.status === 'under review') text += ' (under review)';
+                if(pub.url) li.innerHTML = `<a href="${pub.url}" target="_blank" rel="noopener">${text}</a>`;
+                else li.innerHTML = text;
+                list.appendChild(li);
+              });
+            }catch(e){
+              console.error('Error loading publications:', e);
+              document.getElementById('publications-list').innerHTML = '<li>Error loading publications.</li>';
+            }
+          }
+          document.addEventListener('DOMContentLoaded', loadPublications);
+        </script>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="assets/include.js"></script>
+  </body>
+</html>

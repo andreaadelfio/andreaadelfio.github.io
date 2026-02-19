@@ -8,65 +8,78 @@
   </head>
 
   <body>
+    <div id="page-spinner" class="page-spinner">
+      <div class="spinner-content">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
     <div id="site-header"></div>
 
     <main class="wrap two-col">
-        <h1>About Me</h1>
-        
-        <section>
-            <p class="lead">
-                Data Scientist and ML Engineer | Astrophysics Researcher.
-            </p>
-            <div class="profile-image">
-                <img src="data/images/IMG-20191110-WA0041.jpg" alt="Profile picture">
-            </div>
-                        <h2>At a glance</h2>
-                        <p>
-                        Physicist by training and engineer by practice, I work at the intersection of 
-                        mathematical rigor and production-grade software. I am driven by problems that 
-                        require both solid theoretical foundations and reliable, maintainable implementations. 
-                        I value clean system design, reproducibility, and long-term sustainability of code.
-                        </p>
-                        <p>
-                        Over the past five years, I have operated across research and industry, designing 
-                        end-to-end machine learning pipelines and scalable software systems, with a particular 
-                        focus on multivariate time series, anomaly detection and uncertainty quantification. 
-                        I am especially motivated by contexts where open science, knowledge sharing and 
-                        interdisciplinary collaboration translate advanced methods into real-world impact.
-                        </p>
+      <h1>About Me</h1>
+      <h2>At a glance</h2>
 
-                        <button class="cv-toggle" aria-expanded="false" aria-controls="short-cv">Show Short CV</button>
-                        <div id="short-cv" class="short-cv-window" hidden>
-                            <div class="short-cv-header"><h3>Short CV</h3></div>
-                        </div>
+      <section>
+        <p class="lead">Data Scientist and ML Engineer | Astrophysics Researcher.</p>
+
+        <div class="profile-image">
+          <img src="data/images/IMG-20191110-WA0041.jpg" alt="Profile picture">
+        </div>
+
+        <p>
+          Physicist by training and engineer by practice, I work at the intersection of
+          mathematical rigor and production-grade software. I am driven by problems that
+          require both solid theoretical foundations and reliable, maintainable implementations.
+          I value clean system design, reproducibility, and long-term sustainability of code.
+        </p>
+
+        <p>
+          Over the past five years, I have operated across research and industry, designing
+          end-to-end machine learning pipelines and scalable software systems, with a particular
+          focus on multivariate time series, anomaly detection and uncertainty quantification.
+          I am especially motivated by contexts where open science, knowledge sharing and
+          interdisciplinary collaboration translate advanced methods into real-world impact.
+        </p>
+
+        <button class="cv-toggle" aria-expanded="false" aria-controls="short-cv">Show Short CV</button>
+        <a class="button" href="assets/CV_Andrea_Adelfio.pdf" target="_blank" rel="noopener">Download CV</a>
+
+        <div id="short-cv" class="short-cv-window" hidden>
+          <div class="short-cv-header">
+            <h3>Short CV</h3>
+          </div>
+        </div>
+      </section>
+
+      <div class="sidebar">
+        <section>
+          <h2>Technical Skills</h2>
+          <div class="table-wrap">
+            <h3>Programming</h3>
+            Python (Expert), SQL (Expert), Java (Proficient), Bash, JavaScript, C/C++, LaTeX
+
+            <h3>Machine Learning</h3>
+            Deep Learning, Bayesian Neural Networks, Time Series Analysis, Anomaly Detection, TensorFlow, PyTorch
+
+            <h3>Engineering</h3>
+            Git, CI/CD, Docker, Kubernetes, Linux/Unix, HPC, Data Lakes
+          </div>
         </section>
 
-        <div class="sidebar">
-            <section>
-                <h2>Technical Skills</h2>
-                <div class="table-wrap">
-                    <h3>Programming</h3>
-                    Python (Expert), SQL (Expert), Java (Proficient), Bash, JavaScript, C/C++, LaTeX
-                    <h3>Machine Learning</h3>
-                    Deep Learning, Bayesian Neural Networks, Time Series Analysis, Anomaly Detection, TensorFlow, PyTorch
-                    <h3>Engineering</h3>
-                    Git, CI/CD, Docker, Kubernetes, Linux/Unix, HPC, Data Lakes
-                </div>
-            </section>
-
-            <section>
-                <h2>Languages</h2>
-                <div class="table-wrap">
-                <table>
-                    <tbody>
-                    <tr><th>Italian</th><td>Native</td></tr>
-                    <tr><th>English</th><td>C2 — Cambridge C2 Proficiency (Score 202)</td></tr>
-                    <tr><th>German</th><td>B1</td></tr>
-                    </tbody>
-                </table>
-                </div>
-            </section>
-        </div>
+        <section>
+          <h2>Languages</h2>
+          <div class="table-wrap">
+            <table>
+              <tbody>
+                <tr><th>Italian</th><td>Native</td></tr>
+                <tr><th>English</th><td>C2 — Cambridge C2 Proficiency (Score 202)</td></tr>
+                <tr><th>German</th><td>B1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
 
         <div class="content">
 

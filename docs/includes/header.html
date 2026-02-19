@@ -1,9 +1,22 @@
 <header class="site-header">
   <div class="header-inner">
-    <div class="brand"><a href="index.html">Andrea Adelfio</a></div>
+    <div class="brand">
+      <a href="index.html">
+        <img src="data/images/favicon.png" alt="Andrea Adelfio" class="brand-img">
+        <span>Andrea Adelfio</span>
+      </a>
+    </div>
     <nav class="main-nav" role="navigation" aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
+
+      <div class="nav-dropdown">
+        <a href="research.html" class="nav-dropdown-toggle">Research</a>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="publications.html" role="menuitem">Publications</a>
+          <a href="projects.html" role="menuitem">Projects</a>
+        </div>
+      </div>
+
       <a href="contact.html">Contacts</a>
       <a href="about.html">About Me</a>
     </nav>
