@@ -15,7 +15,8 @@ async function loadInclude(selector, path){
     try{
       const html = await tryFetchText(p);
       if(el) el.innerHTML = html;
-      normalizeNavLinks(el);
+      await normalizeNavLinks(el);
+      setActiveNav();
       return;
     }catch(e){
       // try next candidate
@@ -24,29 +25,32 @@ async function loadInclude(selector, path){
   console.error('Include error: could not load', path, 'tried', candidates);
 }
 
-function normalizeNavLinks(root){
+async function testCandidate(href){
+  try{
+    // Try a simple fetch; many servers disallow HEAD so use GET but don't read body
+    const res = await fetch(href, {cache: 'no-cache'});
+    return res && res.ok;
+  }catch(e){
+    return false;
+  }
+}
+
+async function normalizeNavLinks(root){
   const container = root || document;
-  const links = container.querySelectorAll('.main-nav a');
-  if(!links) return;
-  // If current URL path contains '/docs/' then page is served under /docs/,
-  // otherwise assume pages might be inside the docs folder on disk and
-  // published either with or without the 'docs/' prefix. We normalize
-  // by ensuring links point to the right relative location for the current page.
-  const inDocsPath = location.pathname.includes('/docs/');
-  links.forEach(a => {
+  const links = Array.from(container.querySelectorAll('.main-nav a'));
+  if(!links.length) return;
+  for(const a of links){
     let href = a.getAttribute('href') || '';
-    if(href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) return;
-    if(inDocsPath){
-      // page URL contains /docs/, links should not include docs/ prefix
-      href = href.replace(/^docs\//, '');
-    }else{
-      // page URL does not contain /docs/; ensure links point to docs/ when needed
-      if(!href.startsWith('docs/') && !href.startsWith('/')){
-        href = 'docs/' + href;
+    if(href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) continue;
+    const candidates = [href, './' + href, '../' + href, 'docs/' + href, '/' + href, '/docs/' + href];
+    for(const c of candidates){
+      const ok = await testCandidate(c);
+      if(ok){
+        a.setAttribute('href', c);
+        break;
       }
     }
-    a.setAttribute('href', href);
-  });
+  }
 }
 
 function setActiveNav(){
@@ -55,6 +59,8 @@ function setActiveNav(){
   const links = header.querySelectorAll('.main-nav a');
   const cur = location.pathname.split('/').pop() || 'index.html';
   links.forEach(a=>{
+    a.classList.remove('active');
+    a.removeAttribute('aria-current');
     const href = a.getAttribute('href') || '';
     const hrefLast = href.split('/').pop();
     if(hrefLast === cur || (cur === '' && hrefLast === 'index.html')){
@@ -67,6 +73,4 @@ function setActiveNav(){
 document.addEventListener('DOMContentLoaded', ()=>{
   loadInclude('#site-header','docs/includes/header.html');
   loadInclude('#site-footer','docs/includes/footer.html');
-  // run after a short delay to allow includes to be injected
-  setTimeout(setActiveNav, 200);
 });
