@@ -30,14 +30,9 @@ async function fetchText(path){
 }
 
 function hideSpinner(){
-  setTimeout(() => {
-    const spinner = document.querySelector('#page-spinner');
-    if(!spinner) return;
-    spinner.classList.add('hidden');
-    setTimeout(()=>{
-      spinner.remove();
-    }, 300);
-  }, 300);
+  const spinner = document.querySelector('#page-spinner');
+  if(!spinner) return;
+  spinner.remove();
 }
 
 function isInternalPath(value){
