@@ -6,12 +6,33 @@
         <span>Andrea Adelfio</span>
       </a>
     </div>
-    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+    <button
+      type="button"
+      class="mobile-menu-toggle"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="site-main-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" id="site-main-nav" role="navigation" aria-label="Main navigation">
       <a href="index.html">Home</a>
 
       <div class="nav-dropdown">
-        <a href="research.html" class="nav-dropdown-toggle">Research</a>
-        <div class="nav-dropdown-menu" role="menu">
+        <div class="nav-dropdown-trigger">
+          <a href="research.html" class="nav-dropdown-toggle">Research</a>
+          <button
+            type="button"
+            class="nav-dropdown-arrow"
+            aria-label="Open Research menu"
+            aria-expanded="false"
+            aria-controls="research-submenu">
+            <span aria-hidden="true">▾</span>
+          </button>
+        </div>
+        <div class="nav-dropdown-menu" id="research-submenu" role="menu">
           <a href="publications.html" role="menuitem">Publications</a>
           <a href="projects.html" role="menuitem">Projects</a>
         </div>
@@ -21,4 +42,5 @@
       <a href="about.html">About Me</a>
     </nav>
   </div>
+  <button type="button" class="mobile-nav-backdrop" aria-label="Close navigation menu"></button>
 </header>

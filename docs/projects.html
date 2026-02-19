@@ -26,34 +26,11 @@
           </table>
         </div>
       </section>
-
-      <script>
-        async function loadCSV(path){
-          const res = await fetch(path);
-          const txt = await res.text();
-          const rows = txt.trim().split('\n').map(r=>r.split(','));
-          return rows;
-        }
-        (async ()=>{
-          try{
-            const rows = await loadCSV('data/projects.csv');
-            const tbody = document.querySelector('#projects-table tbody');
-            for(let i=1;i<rows.length;i++){
-              const [name,desc,url] = rows[i];
-              const tr = document.createElement('tr');
-              tr.innerHTML = `<td><a href="${url}" target="_blank">${name}</a></td><td>${desc}</td>`;
-              tbody.appendChild(tr);
-            }
-            }catch(e){
-              console.error(e);
-              document.querySelector('#projects-table tbody').innerHTML = '<tr><td colspan="2">Error loading projects CSV</td></tr>';
-            }
-        })();
-      </script>
     </main>
 
     <div id="site-footer"></div>
 
     <script src="assets/include.js"></script>
+    <script src="assets/projects.js"></script>
   </body>
 </html>

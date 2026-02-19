@@ -53,31 +53,12 @@
         <h2>Selected Publications</h2>
         <ul id="publications-list">
         </ul>
-        <script>
-          async function loadPublications(){
-            try{
-              const res = await fetch('data/publications.json');
-              const data = await res.json();
-              const list = document.getElementById('publications-list');
-              data.publications.forEach(pub => {
-                const li = document.createElement('li');
-                let text = `${pub.authors}: <strong>${pub.title}</strong>. <em>${pub.venue} ${pub.year}</em>`;
-                if(pub.status === 'under review') text += ' (under review)';
-                if(pub.url) li.innerHTML = `<a href="${pub.url}" target="_blank" rel="noopener">${text}</a>`;
-                else li.innerHTML = text;
-                list.appendChild(li);
-              });
-            }catch(e){
-              console.error('Error loading publications:', e);
-              document.getElementById('publications-list').innerHTML = '<li>Error loading publications.</li>';
-            }
-          }
-          document.addEventListener('DOMContentLoaded', loadPublications);
-        </script>
       </section>
     </main>
 
     <div id="site-footer"></div>
     <script src="assets/include.js"></script>
+    <script src="assets/publications-loader.js"></script>
+    <script src="assets/research.js"></script>
   </body>
 </html>
