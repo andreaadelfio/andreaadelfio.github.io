@@ -235,7 +235,7 @@ th,td{
 
 .social a{
   background:transparent;
-  padding:6px 8px;
+  /* padding:6px 8px; */
   border-radius:6px;
   color:var(--muted);
   text-decoration:none}
@@ -356,6 +356,8 @@ main.wrap.two-col.short-cv-open{
 /* Footer social icons */
 .site-footer .social{
   display:flex;
+  flex-direction:column;
+  align-items:center;
   justify-content:center;
   gap:12px;
   margin-bottom:8px}
@@ -365,7 +367,7 @@ main.wrap.two-col.short-cv-open{
   align-items:center;
   justify-content:center;
   width:36px;
-  height:36px;
+  /* height:36px; */
   border-radius:8px;
   color:var(--muted);
   text-decoration:none}
@@ -606,4 +608,3 @@ main.wrap.two-col>.profile-image{
   width: auto;
   display: block;
 }
-
