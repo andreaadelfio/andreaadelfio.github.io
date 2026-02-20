@@ -563,7 +563,7 @@ main.wrap.two-col>.profile-image{
     border-left:1px solid rgba(6,182,212,0.25);
     box-shadow:-10px 0 28px rgba(2,6,23,0.45);
     flex-direction:column;
-    align-items:flex-start;
+    align-items:flex-end;
     gap:12px;
     overflow-y:auto;
     transform:translateX(100%);
@@ -580,7 +580,8 @@ main.wrap.two-col>.profile-image{
 
   .main-nav > a,
   .main-nav .nav-dropdown{
-    width:100%}
+    width:100%;
+    text-align:right}
 
   .main-nav a{
     font-size:20px;
@@ -588,7 +589,7 @@ main.wrap.two-col>.profile-image{
 
   .main-nav .nav-dropdown-trigger{
     width:100%;
-    justify-content:space-between}
+    justify-content:flex-end}
 
   .main-nav .nav-dropdown-menu{
     position:static;
@@ -597,9 +598,10 @@ main.wrap.two-col>.profile-image{
     width:100%;
     margin-top:4px;
     border:0;
-    border-left:1px solid rgba(6,182,212,0.22);
+    border-right:1px solid rgba(6,182,212,0.22);
     border-radius:0;
-    padding:4px 0 0 14px;
+    padding:4px 14px 0 0;
+    text-align:right;
     background:transparent}
 
   .main-nav .nav-dropdown-menu a{
