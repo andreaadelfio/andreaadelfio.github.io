@@ -37,6 +37,18 @@ p.lead{
   margin:0 0 18px;
   color:var(--muted)}
 
+.home-intro{
+  display:flex;
+  flex-direction:column;
+  gap:30px}
+
+.home-intro h1{
+  margin:0 0 2px}
+
+.home-intro .muted{
+  margin:0;
+  line-height:1.45}
+
 .button,
 .cv-toggle{
   display:inline-flex;
