@@ -49,6 +49,22 @@ p.lead{
   margin:0;
   line-height:1.45}
 
+.home-nature-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:20px;
+  align-items:start}
+
+.home-nature-row .inat-widget{
+  margin-left:0;
+  width:100%;
+  max-width:300px}
+
+@media(max-width:900px){
+  .home-nature-row{
+    grid-template-columns:1fr}
+}
+
 .button,
 .cv-toggle{
   display:inline-flex;
