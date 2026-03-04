@@ -343,16 +343,24 @@ th,td{
 /* Footer layout */
 .footer-inner{
   display:flex;
-  gap:24px;
-  justify-content:space-between;
+  gap:72px;
+  justify-content:center;
   align-items:flex-start;
   max-width:1100px;
   margin:0 auto;
   padding:8px 0}
 
 .footer-col{
-  flex:1;
-  min-width:140px}
+  flex:0 1 220px;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center}
+
+.footer-col.footer-social{
+  align-items:center;
+  text-align:center}
 
 .footer-col h4{
   margin:0 0 6px;
@@ -371,8 +379,11 @@ th,td{
   padding-top:8px;
   border-top:1px solid rgba(255,255,255,0.02);
   display:flex;
-  justify-content:space-between;
-  align-items:center}
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  text-align:center}
 
 .back-to-top{
   color:var(--muted);
@@ -455,8 +466,9 @@ main.wrap.two-col.short-cv-open{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:36px;
-  /* height:36px; */
+  gap:8px;
+  min-width:0;
+  padding:6px 10px;
   border-radius:8px;
   color:var(--muted);
   text-decoration:none}
@@ -469,6 +481,10 @@ main.wrap.two-col.short-cv-open{
   width:18px;
   height:18px;
   fill:currentColor}
+
+.site-footer .social i{
+  width:18px;
+  text-align:center}
 
 
 /* Two-column layout for about page */
