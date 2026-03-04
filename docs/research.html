@@ -15,50 +15,62 @@
 
     <div id="site-header"></div>
 
-    <main class="wrap container">
+    <main class="wrap container publications-showcase-page">
       <h1>Research</h1>
       <p class="lead">Selected research projects, publications, and scientific work.</p>
-
-      <section>
-        <h2>Key Projects</h2>
-
-        <article>
-          <a href="https://github.com/andreaadelfio/TSLies" target="_blank" rel="noopener">
-            <h3>TSLies — Time Series anomaLies</h3>
-          </a>
-          <p>
-            Open-source Python framework for anomaly detection in multivariate time series,
-            integrating neural networks and statistical learning methods.
-          </p>
-        </article>
-
-        <article>
-          <h3>Satellite Anomaly Detection Pipelines</h3>
-          <p>
-            Modular ML pipelines for transient detection and distributional shift analysis
-            on large-scale satellite monitoring data.
-          </p>
-        </article>
-
-        <article>
-          <h3>Data Infrastructure</h3>
-          <p>
-            Development of reproducible data-access workflows, preprocessing pipelines and
-            scalable storage solutions for large scientific datasets.
-          </p>
-        </article>
+      
+      <section class="pub-variant">
+        <h2>Selected Publications</h2>
+        <div class="table-wrap pub-table-wrap-compact">
+          <table class="pub-table pub-table-compact" id="publications-list">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Citation</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </section>
 
-      <section>
-        <h2>Selected Publications</h2>
-        <ul id="publications-list">
-        </ul>
+      <section class="pub-variant">
+        <h2>Key Projects</h2>
+        <div class="table-wrap key-projects-box">
+          <article>
+            <h3>TSLies — Time Series anomaLies
+            <a href="https://github.com/andreaadelfio/TSLies" target="_blank" rel="noopener">
+              (GitHub Repo)
+            </a>
+            </h3>
+            <p>
+              Open-source Python framework for anomaly detection in multivariate time series,
+              integrating neural networks and statistical learning methods.
+            </p>
+          </article>
+
+          <article>
+            <h3>Satellite Anomaly Detection Pipelines</h3>
+            <p>
+              Modular ML pipelines for transient detection and distributional shift analysis
+              on large-scale satellite monitoring data.
+            </p>
+          </article>
+
+          <article>
+            <h3>Data Infrastructure</h3>
+            <p>
+              Development of reproducible data-access workflows, preprocessing pipelines and
+              scalable storage solutions for large scientific datasets.
+            </p>
+          </article>
+        </div>
       </section>
     </main>
 
     <div id="site-footer"></div>
     <script src="assets/include.js"></script>
-    <script src="assets/publications-loader.js"></script>
-    <script src="assets/research.js"></script>
+    <script src="assets/publications.js"></script>
   </body>
 </html>

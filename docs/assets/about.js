@@ -19,11 +19,6 @@ function setupShortCvToggle(){
   });
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   setupShortCvToggle();
-  await populatePublicationsList({
-    listId: 'publications-list',
-    dataPath: 'data/publications.json',
-    errorMessage: 'Error loading publications.'
-  });
 });

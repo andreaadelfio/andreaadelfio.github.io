@@ -80,10 +80,14 @@ p.lead{
 
 .action-row{
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
   align-items:center;
   gap:10px;
   margin:8px 0}
+
+.action-row .button,
+.action-row .cv-toggle{
+  white-space:nowrap}
 
 pre{
   background:#071226;
@@ -163,9 +167,11 @@ nav a{
 
 .table-wrap{
   overflow:auto;
-  background:#071226;
+  background:rgba(4,13,28,0.9);
   padding:12px;
-  border-radius:8px}
+  border-radius:10px;
+  border:1px solid rgba(6,182,212,0.18);
+  box-shadow:0 4px 16px rgba(2,6,23,0.3)}
 
 table{
   border-collapse:collapse;
@@ -183,6 +189,88 @@ th,td{
   display:flex;
   gap:24px;
   flex-direction:column}
+
+.publications-showcase-page{
+  gap:22px}
+
+.pub-variant{
+  background:rgba(7,18,38,0.55);
+  border:1px solid rgba(255,255,255,0.04);
+  border-radius:10px;
+  padding:16px}
+
+.pub-variant h2{
+  margin:0 0 12px}
+
+.pub-table{
+  width:100%;
+  border-collapse:collapse}
+
+.pub-table th,
+.pub-table td{
+  vertical-align:top}
+
+.pub-table th{
+  font-weight:700}
+
+.pub-table a{
+  color:#a3edff;
+  text-decoration:none}
+
+.pub-table a:hover{
+  color:var(--accent);
+  text-decoration:underline}
+
+.pub-table-compact{
+  font-size:14px}
+
+.pub-table-compact thead th{
+  font-size:11px;
+  letter-spacing:0.07em;
+  text-transform:uppercase;
+  color:#9ec4d4}
+
+.pub-table-compact .pub-col-year{
+  width:64px;
+  font-weight:700;
+  color:#c6e5ef}
+
+.pub-table-compact .pub-col-citation{
+  line-height:1.45}
+
+.pub-table-compact .pub-citation-title{
+  font-weight:700}
+
+.pub-table-compact .pub-col-link.is-under-review{
+  color:var(--muted);
+  font-size:13px}
+
+.pub-paper-link{
+  color:var(--accent);
+  font-weight:600;
+  text-decoration:none}
+
+.pub-paper-link:hover{
+  text-decoration:underline}
+
+.key-projects-box article{
+  margin:0}
+
+.key-projects-box article + article{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,0.06)}
+
+.key-projects-box h3{
+  margin:0 0 8px}
+
+.key-projects-box p{
+  margin:0}
+
+@media(max-width:760px){
+  .pub-table-compact .pub-col-citation{
+    min-width:260px}
+}
 
 
 /* Header/Footer */
@@ -331,8 +419,7 @@ th,td{
   background:rgba(6,182,212,0.1)}
 
 .social{
-  display:flex;
-  gap:10px}
+  display:flex;}
 
 .social a{
   background:transparent;
@@ -471,7 +558,6 @@ main.wrap.two-col.short-cv-open{
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:12px;
   margin-bottom:8px}
 
 .site-footer .social a{
