@@ -138,6 +138,30 @@ function setFooterYear(){
   yearEl.textContent = String(new Date().getFullYear());
 }
 
+function setupBackToTop(){
+  const links = Array.from(document.querySelectorAll('.back-to-top'));
+  if(!links.length) return;
+
+  links.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const href = link.getAttribute('href') || '#site-header';
+      const targetId = href.startsWith('#') ? href.slice(1) : 'site-header';
+      const target = document.getElementById(targetId) || document.body;
+      const top = target.getBoundingClientRect().top + window.pageYOffset;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+
+      if(history.replaceState && location.hash){
+        history.replaceState(null, '', `${location.pathname}${location.search}`);
+      }
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async ()=>{
   const mode = getNavContextMode();
   const includeBase = mode === 'root-wrapper' ? 'docs/includes' : 'includes';
@@ -150,6 +174,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 
   setActiveNav();
   setFooterYear();
+  setupBackToTop();
   setupDropdownMenus();
   setupMobileMenu();
   hideSpinner();
