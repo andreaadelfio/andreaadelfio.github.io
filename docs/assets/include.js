@@ -148,10 +148,12 @@ function setupBackToTop(){
       const href = link.getAttribute('href') || '#site-header';
       const targetId = href.startsWith('#') ? href.slice(1) : 'site-header';
       const target = document.getElementById(targetId) || document.body;
-      const top = target.getBoundingClientRect().top + window.pageYOffset;
+      const top = targetId === 'site-header'
+        ? 0
+        : Math.max(0, target.offsetTop || 0);
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({
-        top: Math.max(0, top),
+        top,
         behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
 
