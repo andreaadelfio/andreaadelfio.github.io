@@ -55,11 +55,6 @@ p.lead{
   gap:20px;
   align-items:start}
 
-.home-nature-row .inat-widget{
-  margin-left:0;
-  width:100%;
-  max-width:300px}
-
 @media(max-width:900px){
   .home-nature-row{
     grid-template-columns:1fr}
@@ -286,10 +281,6 @@ th,td{
 .photography-page{
   gap:22px}
 
-.photography-inat{
-  display:flex;
-  justify-content:center}
-
 .photo-tag-sections{
   display:flex;
   flex-direction:column;
@@ -312,9 +303,34 @@ th,td{
   margin:0;
   font-size:18px}
 
+.photo-tag-meta{
+  display:flex;
+  align-items:center;
+  gap:10px}
+
 .photo-tag-count{
   margin:0;
   font-size:13px}
+
+.photo-tag-toggle{
+  border:1px solid rgba(6,182,212,0.35);
+  border-radius:999px;
+  background:rgba(6,182,212,0.1);
+  color:#c6e5ef;
+  font:inherit;
+  font-size:12px;
+  font-weight:600;
+  padding:4px 10px;
+  cursor:pointer;
+  transition:background 0.2s ease, border-color 0.2s ease}
+
+.photo-tag-toggle:hover{
+  background:rgba(6,182,212,0.18);
+  border-color:rgba(6,182,212,0.5)}
+
+.photo-tag-toggle:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px}
 
 .photo-gallery{
   display:grid;
@@ -335,7 +351,17 @@ th,td{
 .photo-link{
   position:relative;
   display:block;
-  overflow:hidden}
+  overflow:hidden;
+  width:100%;
+  border:0;
+  padding:0;
+  background:transparent;
+  cursor:zoom-in;
+  text-align:left}
+
+.photo-link:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:-2px}
 
 .photo-image{
   width:100%;
@@ -408,6 +434,133 @@ th,td{
   outline:2px solid var(--accent);
   outline-offset:2px}
 
+.photo-tag-section.is-collapsed{
+  padding:10px}
+
+.photo-tag-section.is-collapsed .photo-gallery{
+  grid-template-columns:repeat(auto-fill, minmax(96px, 1fr));
+  gap:8px}
+
+.photo-tag-section.is-collapsed .photo-image{
+  aspect-ratio:1/1}
+
+.photo-tag-section.is-collapsed .photo-overlay{
+  display:none}
+
+.photo-tag-section.is-collapsed .photo-card{
+  border-radius:8px;
+  transition:none}
+
+.photo-tag-section.is-collapsed .photo-card:hover{
+  transform:none;
+  box-shadow:none}
+
+.photo-tag-section.is-collapsed .photo-card.is-compact-hidden{
+  display:none}
+
+.photo-tag-section.is-collapsed .photo-load-status,
+.photo-tag-section.is-collapsed .photo-load-more{
+  display:none}
+
+.photo-load-more-tile{
+  display:none;
+  width:100%;
+  aspect-ratio:1/1;
+  align-items:center;
+  justify-content:center;
+  border:1px dashed rgba(6,182,212,0.45);
+  border-radius:8px;
+  background:rgba(6,182,212,0.08);
+  color:#a7d8e6;
+  font:inherit;
+  font-size:34px;
+  line-height:1;
+  cursor:pointer;
+  transition:background 0.2s ease, border-color 0.2s ease, color 0.2s ease}
+
+.photo-tag-section.is-collapsed .photo-load-more-tile{
+  display:flex}
+
+.photo-load-more-tile:hover{
+  background:rgba(6,182,212,0.2);
+  border-color:rgba(6,182,212,0.65);
+  color:#d4eef6}
+
+.photo-load-more-tile:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px}
+
+.photo-load-more-tile[hidden]{
+  display:none !important}
+
+body.photo-preview-open{
+  overflow:hidden}
+
+.photo-preview-modal{
+  position:fixed;
+  inset:0;
+  z-index:1400;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(4,13,28,0.9);
+  backdrop-filter:blur(4px)}
+
+.photo-preview-modal[hidden]{
+  display:none}
+
+.photo-preview-panel{
+  width:min(1100px, 100%);
+  max-height:100%;
+  display:flex;
+  flex-direction:column;
+  gap:10px}
+
+.photo-preview-close{
+  align-self:flex-end;
+  border:1px solid rgba(6,182,212,0.35);
+  border-radius:999px;
+  background:rgba(6,182,212,0.1);
+  color:#c6e5ef;
+  font:inherit;
+  font-size:13px;
+  font-weight:600;
+  padding:6px 12px;
+  cursor:pointer}
+
+.photo-preview-close:hover{
+  background:rgba(6,182,212,0.2);
+  border-color:rgba(6,182,212,0.55)}
+
+.photo-preview-close:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px}
+
+.photo-preview-image{
+  width:100%;
+  max-height:calc(100vh - 140px);
+  object-fit:contain;
+  border-radius:12px;
+  border:1px solid rgba(6,182,212,0.2);
+  background:rgba(2,6,23,0.55)}
+
+.photo-preview-caption{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:0 2px}
+
+.photo-preview-title{
+  margin:0;
+  color:#e6eef8;
+  font-weight:700}
+
+.photo-preview-description{
+  margin:0;
+  color:#c6d6e9;
+  line-height:1.4}
+
 @media(max-width:760px){
   .pub-table-compact .pub-col-citation{
     min-width:260px}
@@ -416,8 +569,21 @@ th,td{
     flex-direction:column;
     align-items:flex-start}
 
+  .photo-tag-meta{
+    width:100%;
+    justify-content:space-between}
+
   .photo-gallery{
     grid-template-columns:1fr}
+
+  .photo-tag-section.is-collapsed .photo-gallery{
+    grid-template-columns:repeat(auto-fill, minmax(72px, 1fr))}
+
+  .photo-preview-modal{
+    padding:12px}
+
+  .photo-preview-image{
+    max-height:calc(100vh - 120px)}
 }
 
 
@@ -890,172 +1056,4 @@ main.wrap.two-col>.profile-image{
 
   body.mobile-nav-open{
     overflow:hidden}
-}
-
-/* =========================
-   iNaturalist widget styles
-   ========================= */
-
-.inat-widget,
-.inat-widget *{
-  box-sizing: border-box;
-}
-
-/* container */
-.inat-widget{
-  font-family: Georgia, serif;
-  line-height: 1;
-  width: 300px;
-  background: #fff;
-  margin-left: auto;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-/* header */
-.inat-widget-header{
-  margin: 10px 10px 6px;
-  text-align: center;
-}
-
-.inat-label{ color:#888; }
-
-/* typography consistency */
-.inat-label,
-.inat-value,
-.inat-user{
-  font-family: "Trebuchet MS", Arial, sans-serif;
-}
-
-.inat-meta{
-  font-size: smaller;
-  margin-top: 3px;
-  line-height: 1.2;
-}
-
-/* =========================
-   Thumbnails grid (robust)
-   =========================
-   The widget may inject float/inline/table-ish markup.
-   We force a stable centered grid of 48x48 squares. */
-.inat-widget .inat-widget-small{
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, 48px) !important;
-  justify-content: center !important;
-  align-content: start;
-  gap: 4px !important;
-  padding: 6px 8px 8px !important;
-  width: 100%;
-}
-
-/* kill float layout and normalize tile box */
-.inat-widget .inat-widget-small .inat-observation-image{
-  float: none !important;
-  display: block !important;
-  width: 48px !important;
-  height: 48px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  text-align: center;
-}
-
-/* sometimes image is wrapped in <a> */
-.inat-widget .inat-widget-small .inat-observation-image a{
-  display: block !important;
-  width: 48px !important;
-  height: 48px !important;
-}
-
-/* square thumbnails */
-.inat-widget .inat-widget-small .inat-observation-image img{
-  display: block !important;
-  width: 48px !important;
-  height: 48px !important;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-/* neutralize any table spacing if present */
-.inat-widget .inat-widget-small table,
-.inat-widget .inat-widget-small tbody,
-.inat-widget .inat-widget-small tr,
-.inat-widget .inat-widget-small td{
-  border: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* legacy rules from injected widget (keep harmless) */
-.inat-widget td{
-  vertical-align: top;
-  padding-bottom: 10px;
-}
-
-.inat-observation-body,
-.inat-user-body{
-  padding-left: 10px;
-}
-
-.inat-observation-image{ text-align: center; }
-
-.inat-observation-image,
-.inat-user-image{
-  width: 48px;
-  display: inline-block;
-}
-
-.inat-observation-image img,
-.inat-user-image img{
-  max-width: 48px;
-}
-
-.inat-observation-image img{
-  vertical-align: middle;
-}
-
-/* =========================
-   Footer (user icon + link + iNat logo)
-   ========================= */
-.inat-footer{
-  padding: 10px;
-  border-top: 1px solid rgba(0,0,0,0.06);
-}
-
-.inat-footer-row{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-/* user icon */
-.inat-footer-row .usericon{
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  object-fit: cover;
-  display: block;
-}
-
-/* link */
-.inat-footer-row .inat-link{
-  flex: 1;
-  text-align: center;
-  font-weight: 700;
-  text-decoration: none;
-  color: #06b6d4;
-  font-family: "Trebuchet MS", Arial, sans-serif;
-  line-height: 1.2;
-}
-
-.inat-footer-row .inat-link:hover{
-  text-decoration: underline;
-}
-
-/* iNat logo */
-.inat-footer-row .inat-logo{
-  height: 18px;
-  width: auto;
-  display: block;
 }
