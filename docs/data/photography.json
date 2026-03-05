@@ -1,0 +1,14 @@
+{
+  "cloudName": "dvytw7jg4",
+  "tags": ["top", "birds", "animals", "landscapes"],
+  "defaultTag": "top",
+  "initialVisibleDefaultTag": 9,
+  "initialVisibleOtherTags": 3,
+  "batchSize": 9,
+  "tagLabels": {
+    "top": "Top Picks",
+    "birds": "Birds",
+    "animals": "Animals",
+    "landscapes": "Landscapes"
+  }
+}

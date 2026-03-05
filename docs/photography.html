@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photography | Andrea Adelfio</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <div id="page-spinner" class="page-spinner">
+      <div class="spinner-content">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <div id="site-header"></div>
+
+    <main class="wrap container photography-page">
+      <section class="pub-variant">
+        <h1>My Photo Collection</h1>
+        <p class="lead">
+          A selection of wildlife and nature photos.
+          Check also my iNaturalist profile!
+          <div
+          data-inat-widget
+          data-inat-source="andreaadelfio"
+          data-inat-source-type="user"
+          data-inat-theme="light"
+          data-inat-layout="grid"
+          data-inat-limit="15"
+          data-inat-order-by="observed_on"
+          ></div>
+          <script src="https://glauberramos.github.io/inat/inat-widget.js"></script>
+        </p>
+      </section>
+
+      <section class="pub-variant">
+        <h2>Gallery by Tag</h2>
+        <div id="photo-gallery" class="photo-tag-sections" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="assets/include.js"></script>
+    <script src="assets/photography.js"></script>
+  </body>
+</html>
