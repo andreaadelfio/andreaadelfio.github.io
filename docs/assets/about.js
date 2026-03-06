@@ -1,11 +1,11 @@
 function setupShortCvToggle(){
   const btn = document.querySelector('.cv-toggle');
   const win = document.getElementById('short-cv');
-  const main = document.querySelector('main.wrap.two-col');
-  if(!btn || !win || !main) return;
+  const layout = document.querySelector('.about-two-col');
+  if(!btn || !win || !layout) return;
 
   btn.addEventListener('click', () => {
-    const isOpen = main.classList.toggle('short-cv-open');
+    const isOpen = layout.classList.toggle('short-cv-open');
     if(isOpen){
       win.removeAttribute('hidden');
       btn.textContent = 'Hide Short CV';
