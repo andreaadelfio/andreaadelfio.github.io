@@ -167,6 +167,9 @@ function createPhotoPreviewController(){
   image.className = 'photo-preview-image';
   image.alt = '';
 
+  const media = document.createElement('div');
+  media.className = 'photo-preview-media';
+
   const caption = document.createElement('div');
   caption.className = 'photo-preview-caption';
 
@@ -178,8 +181,9 @@ function createPhotoPreviewController(){
 
   caption.appendChild(captionTitle);
   caption.appendChild(captionDescription);
-  panel.appendChild(closeButton);
-  panel.appendChild(image);
+  media.appendChild(image);
+  media.appendChild(closeButton);
+  panel.appendChild(media);
   panel.appendChild(caption);
   modal.appendChild(panel);
   document.body.appendChild(modal);
