@@ -745,7 +745,8 @@ body.photo-preview-open{
     font-size:19px}
 
   .pub-table-compact .pub-col-citation{
-    min-width:260px}
+    /* min-width:260px */
+    }
 
   .photo-tag-header{
     flex-direction:column;
