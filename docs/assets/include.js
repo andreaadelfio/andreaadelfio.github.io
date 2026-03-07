@@ -115,6 +115,28 @@ async function loadInclude(selector, includePath, mode){
   }
 }
 
+async function loadDataIncludes(mode){
+  const includeTargets = Array.from(document.querySelectorAll('[data-include]'));
+  if(!includeTargets.length) return;
+
+  await Promise.all(includeTargets.map(async (el) => {
+    const includeRef = el.getAttribute('data-include') || '';
+    if(!includeRef) return;
+
+    const includePath = resolveInternalPath(normalizeRelativePath(includeRef), mode, false);
+    if(!includePath) return;
+
+    try{
+      const html = await fetchText(includePath);
+      el.innerHTML = html;
+      normalizeNavLinks(el, mode);
+      normalizeImages(el, mode);
+    }catch(error){
+      console.error('Include error:', includePath, error);
+    }
+  }));
+}
+
 function setActiveNav(){
   const header = document.querySelector('#site-header');
   if(!header) return;
@@ -173,6 +195,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     loadInclude('#site-header', `${includeBase}/header.html`, mode),
     loadInclude('#site-footer', `${includeBase}/footer.html`, mode)
   ]);
+  await loadDataIncludes(mode);
 
   setActiveNav();
   setFooterYear();
