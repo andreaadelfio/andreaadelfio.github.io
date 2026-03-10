@@ -323,60 +323,6 @@ th,td{
 .pub-paper-link:hover{
   text-decoration:underline}
 
-.publication-aggregator{
-  display:flex;
-  flex-direction:column;
-  gap:12px}
-
-.pub-aggregator-note{
-  margin:0 0 12px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.45}
-
-.pub-source-status-list{
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:grid;
-  gap:8px}
-
-.pub-source-status{
-  margin:0;
-  padding:9px 10px;
-  border-radius:8px;
-  border:1px solid rgba(148,163,184,0.25);
-  background:rgba(2,6,23,0.45);
-  font-size:13px;
-  line-height:1.4}
-
-.pub-source-status-label{
-  color:#e6eef8}
-
-.pub-source-status.is-ok{
-  border-color:rgba(16,185,129,0.35)}
-
-.pub-source-status.is-warning{
-  border-color:rgba(245,158,11,0.35)}
-
-.pub-source-status.is-error{
-  border-color:rgba(248,113,113,0.45)}
-
-.pub-col-source{
-  width:148px}
-
-.pub-source-badge{
-  display:inline-block;
-  border:1px solid rgba(6,182,212,0.32);
-  border-radius:999px;
-  background:rgba(6,182,212,0.12);
-  color:#c6e5ef;
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:0.03em;
-  padding:2px 8px;
-  margin:2px 6px 2px 0}
-
 .key-projects-box article{
   margin:0}
 

@@ -7,12 +7,35 @@ function ensureSentence(text){
   return /[.!?;:]$/.test(value) ? value : `${value}.`;
 }
 
+function normalizeYearMonth(value){
+  const text = String(value || '').trim();
+  if(!text) return '';
+
+  const match = text.match(/\b(19|20)\d{2}(?:[-/](0?[1-9]|1[0-2]))?/);
+  if(!match) return '';
+
+  const year = match[0].slice(0, 4);
+  const month = match[2];
+  if(!month) return year;
+  return `${year}-${month.padStart(2, '0')}`;
+}
+
+function yearMonthRank(value){
+  const normalized = normalizeYearMonth(value);
+  if(!normalized) return 0;
+  const [yearText, monthText] = normalized.split('-');
+  const year = Number(yearText) || 0;
+  const month = Number(monthText || '0') || 0;
+  return (year * 100) + month;
+}
+
 function toPublication(item){
+  const normalizedYear = normalizeYearMonth(item?.year);
   return {
     title: String(item?.title || 'Untitled publication'),
-    authors: String(item?.authors || 'Unknown authors'),
+    author: String(item?.author || item?.authors || 'Unknown author'),
     venue: String(item?.venue || 'Unknown venue'),
-    year: Number(item?.year) || 0,
+    year: normalizedYear || String(item?.year || ''),
     url: item?.url ? String(item.url) : '',
     status: item?.status === 'under review' ? 'under review' : 'published'
   };
@@ -22,7 +45,7 @@ function getPublications(data){
   const items = Array.isArray(data?.publications) ? data.publications : [];
   return items
     .map(toPublication)
-    .sort((a, b) => (b.year - a.year) || a.title.localeCompare(b.title));
+    .sort((a, b) => (yearMonthRank(b.year) - yearMonthRank(a.year)) || a.title.localeCompare(b.title));
 }
 
 function makeTitleNode(publication){
@@ -77,7 +100,7 @@ function renderTable(body, publications){
 
     const yearCell = document.createElement('td');
     yearCell.className = 'pub-col-year';
-    yearCell.textContent = String(publication.year);
+    yearCell.textContent = publication.year || 'n/a';
 
     const citationCell = document.createElement('td');
     citationCell.className = 'pub-col-citation';
@@ -87,9 +110,8 @@ function renderTable(body, publications){
     titleSpan.appendChild(makeTitleNode(publication));
 
     citationCell.appendChild(titleSpan);
-    citationCell.append('.');
     citationCell.appendChild(document.createElement('br'));
-    citationCell.append(`${ensureSentence(publication.authors)} `);
+    citationCell.append(`${ensureSentence(publication.author)} et al., `);
 
     const venue = document.createElement('em');
     venue.textContent = publication.venue;

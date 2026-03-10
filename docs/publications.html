@@ -26,8 +26,8 @@
           <table class="pub-table pub-table-compact" id="publications-list">
             <thead>
               <tr>
-                <th>Year</th>
-                <th>Citation</th>
+                <th>Date</th>
+                <th>Paper</th>
                 <th>Link</th>
               </tr>
             </thead>
@@ -35,36 +35,10 @@
           </table>
         </div>
       </section>
-
-      <section class="pub-variant">
-        <h2>All publications (ORCID, ADS, ResearchGate)</h2>
-        <p class="lead">
-          Automatic retrieval from ORCID and ADS APIs, with optional ResearchGate JSON export support.
-        </p>
-        <p class="pub-aggregator-note">
-          ResearchGate currently has no official public client-side publications API. If you export your publications to JSON,
-          set <code>data-researchgate-json</code> below to include them here.
-        </p>
-        <div
-          id="publication-aggregator"
-          class="publication-aggregator"
-          data-author-names="Andrea Adelfio"
-          data-orcid-ids="0009-0004-3923-9884"
-          data-identifiers="and.adelfio@gmail.com"
-          data-ads-token=""
-          data-ads-query=""
-          data-researchgate-profile="Andrea-Adelfio"
-          data-researchgate-json=""
-          data-max-items="80"
-          aria-live="polite">
-          <p class="muted">Loading publications...</p>
-        </div>
-      </section>
     </main>
 
     <div id="site-footer"></div>
     <script src="assets/include.js"></script>
     <script src="assets/publications.js"></script>
-    <script src="assets/publications-sources.js"></script>
   </body>
 </html>

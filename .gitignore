@@ -1,0 +1,4 @@
+# Local-only automation scripts and secrets
+scripts-local/
+.env
+.env.*
