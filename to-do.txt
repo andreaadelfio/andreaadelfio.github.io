@@ -1,4 +1,3 @@
 # to do list
 
-- automatic retrieve of publications
 - provare nuovi temi e stili

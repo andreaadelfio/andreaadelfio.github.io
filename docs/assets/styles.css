@@ -108,6 +108,41 @@ p.lead{
   margin:0;
   line-height:1.45}
 
+.visitor-map{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding:16px;
+  border:1px solid rgba(6,182,212,0.2);
+  border-radius:12px;
+  background:rgba(7,18,38,0.55)}
+
+.visitor-map h3{
+  margin:0;
+  font-size:20px}
+
+.visitor-map-description{
+  margin:0;
+  line-height:1.45}
+
+.visitor-map-canvas{
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.07);
+  background:rgba(4,13,28,0.75);
+  overflow:hidden}
+
+.visitor-map-canvas script{
+  max-width:100%}
+
+.visitor-map-status{
+  margin:0;
+  font-size:13px}
+
 .home-nature-row{
   display:grid;
   grid-template-columns:minmax(0,1fr) 300px;
@@ -762,6 +797,9 @@ body.photo-preview-open{
 
   .home-intro-title{
     font-size:22px}
+
+  .visitor-map-canvas{
+    min-height:240px}
 
   .timeline-list{
     gap:12px}
