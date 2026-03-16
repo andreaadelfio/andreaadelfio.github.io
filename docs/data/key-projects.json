@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "title": "TSLies - Time Series anomaLies",
+      "description": "Open-source Python framework for anomaly detection in multivariate time series, integrating neural networks and statistical learning methods.",
+      "url-github": "https://github.com/andreaadelfio/TSLies",
+      "url-poster": "https://andreaadelfio.github.io/tslies-poster/poster.html"
+    },
+    {
+      "title": "ACDAnomalies: Satellite Anomaly Detection Pipeline for the Fermi Anti-Coincidence Detector",
+      "description": "Implementation of TSLies for a ML pipeline for transient detection on the Fermi Anti-Coincidence Detector.",
+      "url-github": "https://github.com/andreaadelfio/ACDAnomalies",
+      "url-poster": "https://andreaadelfio.github.io/acdanomalies-poster/poster.html"
+    },
+    {
+      "title": "ATS: Anomalies in Time Series",
+      "description": "Modular ML pipelines for transient detection and distributional shift analysis on large-scale satellite monitoring data.",
+      "url-github": "https://github.com/ICSC-Spoke3/ATS",
+      "url-poster": ""
+    },
+    {
+      "title": "FermiFilters: Data Infrastructure for Filtering Fermi Data",
+      "description": "Development of reproducible data-access workflows, preprocessing pipelines and scalable storage solutions for large scientific datasets.",
+      "url-github": "https://github.com/andreaadelfio/fermifilters",
+      "url-poster": ""
+    }
+  ]
+}
