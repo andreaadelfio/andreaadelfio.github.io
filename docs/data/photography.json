@@ -1,6 +1,6 @@
 {
   "cloudName": "dvytw7jg4",
-  "tags": ["top", "landscapes", "animals", "birds", "various"],
+  "tags": ["top", "landscapes", "animals", "birds", "thecoupleinmybackyard", "various"],
   "defaultTag": "top",
   "initialVisibleDefaultTag": 9,
   "initialVisibleOtherTags": 3,
@@ -9,6 +9,7 @@
     "top": "Top Picks",
     "birds": "Birds",
     "animals": "Animals",
+    "thecoupleinmybackyard": "The Couple in My Backyard",
     "landscapes": "Landscapes",
     "various": "Various"
   }
