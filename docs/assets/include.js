@@ -1,3 +1,24 @@
+let themeRefreshTimerId = null;
+const themeUtils = window.siteUtils;
+
+function scheduleThemeRefresh(){
+  if(!themeUtils) return;
+
+  if(themeRefreshTimerId){
+    clearTimeout(themeRefreshTimerId);
+  }
+
+  themeRefreshTimerId = window.setTimeout(() => {
+    themeUtils.applyTimeBasedTheme();
+    scheduleThemeRefresh();
+  }, themeUtils.getMsUntilNextThemeChange());
+}
+
+if(themeUtils){
+  themeUtils.applyTimeBasedTheme();
+  scheduleThemeRefresh();
+}
+
 function getNavContextMode(){
   const includeScript = document.querySelector('script[src*="include.js"]');
   const rawSrc = includeScript ? (includeScript.getAttribute('src') || '') : '';
