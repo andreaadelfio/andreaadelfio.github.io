@@ -1177,7 +1177,6 @@ body.photo-preview-open{
 .site-footer .social{
   display:flex;
   flex-direction:column;
-  gap:4px;
   align-items:center;
   justify-content:center;
   margin-bottom:8px}
@@ -1248,6 +1247,64 @@ body.photo-preview-open{
 
 .about-two-col .content{
   grid-column:2}
+
+/* Contact page specific styles */
+.contact-hero{
+  background:rgba(7,18,38,0.55);
+  border:1px solid rgba(6,182,212,0.15);
+  border-radius:10px;
+  padding:24px;
+  margin-bottom:16px}
+
+.contact-hero h1{
+  margin:0 0 12px;
+  font-size:24px}
+
+.contact-hero .lead{
+  margin:0;
+  font-size:16px}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:20px}
+
+.contact-card{
+  background:rgba(7,18,38,0.55);
+  border:1px solid rgba(255,255,255,0.04);
+  border-radius:10px;
+  padding:20px;
+  transition:transform 0.2s ease, box-shadow 0.2s ease}
+
+.contact-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(2,6,23,0.35)}
+
+.contact-card h2{
+  margin:0 0 16px;
+  font-size:18px;
+  color:#c6e5ef}
+
+.contact-card p{
+  margin:0 0 10px;
+  line-height:1.45}
+
+.contact-card p:last-child{
+  margin-bottom:0}
+
+.contact-link{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+  transition:color 0.2s ease}
+
+.contact-link:hover{
+  color:#a3edff;
+  text-decoration:underline}
+
+.contact-link:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px}
 
 
 @media(max-width:900px){
