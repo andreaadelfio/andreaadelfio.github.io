@@ -1,6 +1,14 @@
 {
   "publications": [
     {
+      "title": "Advances on TSLies: Time Series AnomaLIES, an efficient machine learning based anomaly detection framework",
+      "author": "Andrea Adelfio",
+      "venue": "Astronomy and Computing",
+      "year": "2026-04",
+      "url": "http://dx.doi.org/10.1016/j.ascom.2026.101113",
+      "status": "published"
+    },
+    {
       "title": "Scalable and interoperable data management in the spoke 3 big data infrastructure",
       "author": "Coran, G.",
       "venue": "Astronomy and Computing",
@@ -9,15 +17,7 @@
       "status": "published"
     },
     {
-      "title": "Advances on TSLies: Time Series AnomaLIES, an Efficient Machine Learning Based Anomaly Detection Framework",
-      "author": "Andrea Adelfio",
-      "venue": "Astronomy and Computing",
-      "year": "2026",
-      "url": "",
-      "status": "under review"
-    },
-    {
-      "title": "A Systematic Search for MeV–GeV Pulsar Wind Nebulae without Gamma-Ray Detected Pulsars",
+      "title": "A Systematic Search for MeV─GeV Pulsar Wind Nebulae without Gamma-Ray Detected Pulsars",
       "author": "Fermi-LAT Collaboration",
       "venue": "The Astrophysical Journal",
       "year": "2025-08",
@@ -35,7 +35,7 @@
     {
       "title": "Anomaly Detection with Machine Learning on Time Series: Unveiling Lost Transients Data",
       "author": "Adelfio, Andrea",
-      "venue": "2025 33rd Euromicro International Conference on Parallel",
+      "venue": "2025 33rd Euromicro International Conference on Parallel, Distributed, and Network-Based Processing (PDP)",
       "year": "2025-03",
       "url": "https://doi.org/10.1109/pdp66500.2025.00062",
       "status": "published"
@@ -43,7 +43,7 @@
     {
       "title": "Spoke 3 Big Data Management, Storage, and Archive Infrastructure",
       "author": "Coran, Giacomo",
-      "venue": "2025 33rd Euromicro International Conference on Parallel",
+      "venue": "2025 33rd Euromicro International Conference on Parallel, Distributed, and Network-Based Processing (PDP)",
       "year": "2025-03",
       "url": "https://doi.org/10.1109/pdp66500.2025.00072",
       "status": "published"
