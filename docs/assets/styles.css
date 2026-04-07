@@ -1012,6 +1012,9 @@ body.photo-preview-open {
 .photo-preview-nav-next {
   right: 10px;
 }
+.photo-preview-nav[hidden] {
+  display: none !important;
+}
 #site-header {
   position: sticky;
   top: 0;

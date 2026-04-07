@@ -213,22 +213,27 @@ function createPhotoPreviewController(){
   let lastFocusedElement = null;
   let photos = [];
   let currentIndex = -1;
+  let isImageLoading = false;
 
   function updateNavigationButtons(){
     const hasPrev = currentIndex > 0;
     const hasNext = currentIndex < photos.length - 1;
-    prevButton.hidden = !hasPrev;
-    nextButton.hidden = !hasNext;
+    prevButton.hidden = !hasPrev || isImageLoading;
+    nextButton.hidden = !hasNext || isImageLoading;
   }
 
   function showSpinner(){
+    isImageLoading = true;
     spinner.hidden = false;
     image.style.opacity = '0.5';
+    updateNavigationButtons();
   }
 
   function hideSpinner(){
+    isImageLoading = false;
     spinner.hidden = true;
     image.style.opacity = '1';
+    updateNavigationButtons();
   }
 
   function displayPhoto(index){
@@ -245,8 +250,6 @@ function createPhotoPreviewController(){
     captionTitle.hidden = !photo.title;
     captionDescription.hidden = !photo.description;
     caption.hidden = !(photo.title || photo.description);
-
-    updateNavigationButtons();
   }
 
   function close(){
