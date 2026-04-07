@@ -163,6 +163,25 @@ function createPhotoPreviewController(){
   closeButton.setAttribute('aria-label', 'Close preview');
   closeButton.textContent = 'Close';
 
+  const prevButton = document.createElement('button');
+  prevButton.type = 'button';
+  prevButton.className = 'photo-preview-nav photo-preview-nav-prev';
+  prevButton.setAttribute('aria-label', 'Previous photo');
+  prevButton.textContent = '←';
+  prevButton.hidden = true;
+
+  const nextButton = document.createElement('button');
+  nextButton.type = 'button';
+  nextButton.className = 'photo-preview-nav photo-preview-nav-next';
+  nextButton.setAttribute('aria-label', 'Next photo');
+  nextButton.textContent = '→';
+  nextButton.hidden = true;
+
+  const spinner = document.createElement('div');
+  spinner.className = 'photo-preview-spinner';
+  spinner.innerHTML = '<div class="spinner"></div>';
+  spinner.hidden = true;
+
   const image = document.createElement('img');
   image.className = 'photo-preview-image';
   image.alt = '';
@@ -182,18 +201,59 @@ function createPhotoPreviewController(){
   caption.appendChild(captionTitle);
   caption.appendChild(captionDescription);
   media.appendChild(image);
+  media.appendChild(spinner);
   media.appendChild(closeButton);
+  media.appendChild(prevButton);
+  media.appendChild(nextButton);
   panel.appendChild(media);
   panel.appendChild(caption);
   modal.appendChild(panel);
   document.body.appendChild(modal);
 
   let lastFocusedElement = null;
+  let photos = [];
+  let currentIndex = -1;
+
+  function updateNavigationButtons(){
+    const hasPrev = currentIndex > 0;
+    const hasNext = currentIndex < photos.length - 1;
+    prevButton.hidden = !hasPrev;
+    nextButton.hidden = !hasNext;
+  }
+
+  function showSpinner(){
+    spinner.hidden = false;
+    image.style.opacity = '0.5';
+  }
+
+  function hideSpinner(){
+    spinner.hidden = true;
+    image.style.opacity = '1';
+  }
+
+  function displayPhoto(index){
+    if(index < 0 || index >= photos.length) return;
+    currentIndex = index;
+    const photo = photos[index];
+
+    showSpinner();
+    image.src = photo.src;
+    image.alt = photo.alt;
+
+    captionTitle.textContent = photo.title;
+    captionDescription.textContent = photo.description;
+    captionTitle.hidden = !photo.title;
+    captionDescription.hidden = !photo.description;
+    caption.hidden = !(photo.title || photo.description);
+
+    updateNavigationButtons();
+  }
 
   function close(){
     if(modal.hidden) return;
     modal.hidden = true;
     image.removeAttribute('src');
+    image.style.opacity = '1';
     document.body.classList.remove('photo-preview-open');
     if(lastFocusedElement instanceof HTMLElement){
       lastFocusedElement.focus();
@@ -212,18 +272,25 @@ function createPhotoPreviewController(){
       ? payload.trigger
       : (document.activeElement instanceof HTMLElement ? document.activeElement : null);
 
-    image.src = source;
-    image.alt = alt;
-
-    captionTitle.textContent = title;
-    captionDescription.textContent = description;
-    captionTitle.hidden = !title;
-    captionDescription.hidden = !description;
-    caption.hidden = !(title || description);
+    photos = payload?.allPhotos || [{src: source, alt, title, description}];
+    const startIndex = payload?.index !== undefined ? payload.index : 0;
 
     modal.hidden = false;
     document.body.classList.add('photo-preview-open');
+    displayPhoto(startIndex);
     closeButton.focus();
+  }
+
+  function navigatePrev(){
+    if(currentIndex > 0){
+      displayPhoto(currentIndex - 1);
+    }
+  }
+
+  function navigateNext(){
+    if(currentIndex < photos.length - 1){
+      displayPhoto(currentIndex + 1);
+    }
   }
 
   modal.addEventListener('click', (event) => {
@@ -236,18 +303,31 @@ function createPhotoPreviewController(){
     event.stopPropagation();
   });
 
+  image.addEventListener('load', hideSpinner);
+  image.addEventListener('error', hideSpinner);
+
   closeButton.addEventListener('click', close);
+  prevButton.addEventListener('click', navigatePrev);
+  nextButton.addEventListener('click', navigateNext);
+
   document.addEventListener('keydown', (event) => {
-    if(event.key === 'Escape' && !modal.hidden){
+    if(modal.hidden) return;
+    if(event.key === 'Escape'){
       event.preventDefault();
       close();
+    }else if(event.key === 'ArrowLeft'){
+      event.preventDefault();
+      navigatePrev();
+    }else if(event.key === 'ArrowRight'){
+      event.preventDefault();
+      navigateNext();
     }
   });
 
   return {open, close};
 }
 
-function createPhotoCard(cloudName, photo, previewController){
+function createPhotoCard(cloudName, photo, previewController, allPhotosArray, sectionIndex){
   const {full, thumb} = getPhotoUrls(cloudName, photo);
   if(!thumb && !full) return null;
 
@@ -292,12 +372,17 @@ function createPhotoCard(cloudName, photo, previewController){
   }
 
   trigger.addEventListener('click', () => {
+    const photoIndex = allPhotosArray.length > 0 
+      ? allPhotosArray.findIndex(p => p.src === (full || thumb))
+      : 0;
     previewController.open({
       src: full || thumb,
       alt: photo.alt,
       title: photo.title,
       description: photo.description,
-      trigger
+      trigger,
+      allPhotos: allPhotosArray,
+      index: photoIndex >= 0 ? photoIndex : 0
     });
   });
 
@@ -471,7 +556,16 @@ function appendNextBatch(state, customSize){
 
   batch.forEach((photo) => {
     const normalized = normalizePhoto(photo);
-    const card = createPhotoCard(state.cloudName, normalized, state.previewController);
+    const {full, thumb} = getPhotoUrls(state.cloudName, normalized);
+    const photoData = {
+      src: full || thumb,
+      alt: normalized.alt,
+      title: normalized.title,
+      description: normalized.description
+    };
+    state.allPhotos.push(photoData);
+    
+    const card = createPhotoCard(state.cloudName, normalized, state.previewController, state.allPhotos);
     if(card) fragment.appendChild(card);
   });
 
@@ -544,6 +638,7 @@ function createSectionStates(root, cloudName, batchSize, groups, previewControll
       compactVisible: COMPACT_VISIBLE_STEP,
       complete: group.items.length === 0,
       previewController,
+      allPhotos: [],
       ...ui
     };
   });
