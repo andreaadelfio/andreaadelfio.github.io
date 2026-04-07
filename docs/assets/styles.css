@@ -996,6 +996,7 @@ body.photo-preview-open {
   font-weight: bold;
   cursor: pointer;
   padding: 0;
+  line-height: 1;
   transition: background 0.2s ease, color 0.2s ease;
 }
 .photo-preview-nav:hover:not(:disabled) {
