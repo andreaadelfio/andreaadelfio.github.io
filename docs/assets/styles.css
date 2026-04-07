@@ -13,11 +13,6 @@
   border-radius:12px;
   box-shadow:0 6px 30px rgba(2,6,23,0.6)}
 
-@media(min-width:1024px){
-  .wrap{
-    margin-top:48px}
-}
-
 html,body{
   min-height:100vh;
   display:flex;
@@ -173,8 +168,7 @@ footer{
 
 nav{
   display:flex;
-  gap:12px;
-  margin-bottom:18px}
+  gap:12px;}
 
 nav a{
   color:var(--accent);
@@ -1126,7 +1120,7 @@ body.photo-preview-open{
 
 .footer-col.footer-nav nav a{
   display:block;
-  margin:6px 0;
+  margin:7px 0;
   color:var(--muted)}
 
 .footer-col.footer-nav nav a:hover{
@@ -1205,7 +1199,6 @@ body.photo-preview-open{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  /* gap:8px; */
   min-width:0;
   padding:0 10px;
   border-radius:8px;
