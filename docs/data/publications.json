@@ -13,7 +13,7 @@
       "author": "Coran, G.",
       "venue": "Astronomy and Computing",
       "year": "2026-04",
-      "url": "https://doi.org/10.1016/j.ascom.2026.101065",
+      "url": "http://dx.doi.org/10.1016/j.ascom.2026.101065",
       "status": "published"
     },
     {
@@ -37,7 +37,7 @@
       "author": "Adelfio, Andrea",
       "venue": "2025 33rd Euromicro International Conference on Parallel, Distributed, and Network-Based Processing (PDP)",
       "year": "2025-03",
-      "url": "https://doi.org/10.1109/pdp66500.2025.00062",
+      "url": "http://dx.doi.org/10.1109/pdp66500.2025.00062",
       "status": "published"
     },
     {
@@ -45,7 +45,7 @@
       "author": "Coran, Giacomo",
       "venue": "2025 33rd Euromicro International Conference on Parallel, Distributed, and Network-Based Processing (PDP)",
       "year": "2025-03",
-      "url": "https://doi.org/10.1109/pdp66500.2025.00072",
+      "url": "http://dx.doi.org/10.1109/pdp66500.2025.00072",
       "status": "published"
     },
     {
@@ -59,9 +59,9 @@
     {
       "title": "Searching for very-high-energy electromagnetic counterparts to gravitational-wave events with the Cherenkov Telescope Array",
       "author": "Patricelli, B.",
-      "venue": "37th International Cosmic Ray Conference",
-      "year": "2022-03",
-      "url": "https://doi.org/10.22323/1.395.0998",
+      "venue": "Proceedings of 37th International Cosmic Ray Conference — PoS(ICRC2021)",
+      "year": "2021-07",
+      "url": "http://dx.doi.org/10.22323/1.395.0998",
       "status": "published"
     }
   ]
